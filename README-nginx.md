@@ -74,3 +74,23 @@ sudo service nginx reload
 2. On first visit, you will be prompted to create a user
 3. Login
 4. Add camera(s) via ONVIF (recommended) or RTSP directly
+
+
+#### Note for Specific Cameras
+Some cameras, in particular FOSCAM, don't work with ONVIF settings.  Instead, add the camera and specify the RTSP directly, e.g.
+
+| Camera   | RTSP                                  | Screenshot                                      |
+|:-------- |:--------------------------------------|:------------------------------------------------|
+| FDT 7903 |`rtsp://$USER:$PASS@$HOST:554/11`      |`http://$HOST/web/auto.jpg?-usr=$USER&-pwd=$PASS`|
+| R2       |`rtsp://$USER:$PASS@$HOST:88/videoMain`| --                                              |
+
+#### Cleaning Up RokuCam HLS Transcoding Processes
+
+You may want to create `/etc/cron.daily/rokucam` to kill HLS processes once a day.  They are started when a camera is viewed on the Roku and if not cleaned up, they will continue to run forever.
+
+```
+#!/bin/sh
+
+# kill all hls streams daily (rokucam brings them up, but never shuts them down)
+killall `ps uwax | grep ffmpeg | grep hls | awk '{print $2}'`
+```
