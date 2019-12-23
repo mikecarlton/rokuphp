@@ -94,5 +94,5 @@ You may want to create `/etc/cron.daily/rokucam` to kill HLS processes once a da
 #!/bin/sh
 
 # kill all hls streams daily (rokucam brings them up, but never shuts them down)
-killall `ps uwax | grep ffmpeg | grep hls | awk '{print $2}'`
+kill `ps uwax | grep ffmpeg | grep hls | awk '{print $2}'`
 ```
