@@ -79,10 +79,12 @@ sudo service nginx reload
 #### Note for Specific Cameras
 Some cameras, in particular FOSCAM, don't work with ONVIF settings.  Instead, add the camera and specify the RTSP directly, e.g.
 
-| Camera   | RTSP                                  | Screenshot                                      |
-|:-------- |:--------------------------------------|:------------------------------------------------|
-| FDT 7903 |`rtsp://$USER:$PASS@$HOST:554/11`      |`http://$HOST/web/auto.jpg?-usr=$USER&-pwd=$PASS`|
-| R2       |`rtsp://$USER:$PASS@$HOST:88/videoMain`| --                                              |
+| Camera   | RTSP                                   | Screenshot                                       |
+|:-------- |:---------------------------------------|:-------------------------------------------------|
+| FDT 7903 |`rtsp://<USER>:<PW>@<HOST>:554/11`      |`http://<HOST>/web/auto.jpg?-usr=<USER>&-pwd=<PW>`|
+| R2       |`rtsp://<USER>:<PW>@<HOST>:88/videoMain`| --                                               |
+
+Substitute `<USER>`, `<PW>` and `<HOST>` accordingly.
 
 #### Cleaning Up RokuCam HLS Transcoding Processes
 
