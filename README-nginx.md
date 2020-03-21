@@ -33,7 +33,7 @@ server {
         location /hls {
                 autoindex on;
                 alias /dev/shm;
-                expires max;
+                expires -1;
                 try_files $uri $uri/ =404;
         }
 
